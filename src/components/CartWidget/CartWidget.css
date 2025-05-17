@@ -1,0 +1,12 @@
+.cart-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6bd85f;
+}
+.cart-icon {
+    position: relative;
+    display: flex;
+    font-size: 2rem;
+    margin: 0 1rem;
+}
