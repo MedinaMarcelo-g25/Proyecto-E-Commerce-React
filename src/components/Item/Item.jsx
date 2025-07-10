@@ -19,7 +19,7 @@ function Item({ id, precio, nombre, imagenUrl}) {
                 <Link to={`/detalle/${id}`}>
                     <button className="card-button">Ver detalle</button>
                 </Link>
-                <button className="card-button" onClick={() => agregarAlCarrito({ id, precio, nombre, cantidad: 1 })}>Agregar al carrito</button>
+                <button className="card-button" onClick={() => agregarAlCarrito({ id, precio, nombre, imagenUrl, cantidad: 1 })}>Agregar al carrito</button>
             </div>
         </div>
     );

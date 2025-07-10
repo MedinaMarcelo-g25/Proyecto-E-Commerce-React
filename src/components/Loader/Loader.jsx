@@ -1,7 +1,10 @@
 import './Loader.css';
 function Loader() {
     return (
-        <span className="loader"></span>
+        <div className="loader-container">
+            <span className="loader"></span>
+            <div className="loader-text">Cargando...</div>
+        </div>
     );
 };
 

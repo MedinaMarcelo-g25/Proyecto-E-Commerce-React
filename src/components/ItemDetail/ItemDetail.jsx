@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 import './ItemDetail.css';
 import { useEffect, useState } from 'react';
 import getProductos from '../../servicios/mockServicios';
@@ -36,7 +36,7 @@ function ItemDetail() {
     useEffect(() => {
         getProductos()
             .then(result => {
-                const product = result.find(elem => elem.id === id);
+                const product = result.find(elem => String(elem.id) === String(id));
                 setProducto(product);
                 setLoading(false);
 

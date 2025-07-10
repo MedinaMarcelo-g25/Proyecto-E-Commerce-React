@@ -1,12 +1,62 @@
-# React + Vite
+# Proyecto Final de Comercio Electrónico en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un E-commerce desarrollado en React, utilizando Firebase como base de datos, realizado para el curso de CoderHouse. La tienda está orientada a la venta de productos tecnológicos, como smartphones iPhone, consolas de videojuegos, accesorios y una sección especial de perfumería importada de selección árabe.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Catálogo de productos con imágenes y categorías.
+- Carrito de compras con gestión de cantidades.
+- Checkout con formulario de usuario.
+- Integración con Firebase para almacenamiento de productos y órdenes.
+- Navegación mediante React Router.
+- Notificaciones con React Toastify.
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/MedinaMarcelo-g25/Proyecto-E-Commerce-React.git
+   cd Proyecto-E-Commerce-React
+   ```
+
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+
+3. Configura las variables de entorno en el archivo `.env` con tus credenciales de Firebase.
+
+4. Inicia la aplicación en modo desarrollo:
+   ```sh
+   npm run dev
+   ```
+
+## Scripts disponibles
+
+- `npm run dev`: Inicia el servidor de desarrollo.
+
+## Tecnologías utilizadas
+
+- React
+- Firebase
+- React Router DOM
+- React Toastify
+- Vite
+
+## Estructura del proyecto
+
+```
+src/
+  components/
+  context/
+  servicios/
+  App.jsx
+  main.jsx
+  firebaseConfig.js
+public/
+  assets/
+```
+
+## Autor
+
+Proyecto realizado para el curso de CoderHouse por [Marcelo Gustavo Medina](https://github.com/MedinaMarcelo-g25).
