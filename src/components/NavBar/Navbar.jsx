@@ -13,7 +13,7 @@ function Navbar() {
         <li><Link to="/categoria/Electrónica">Electrónica</Link></li>
         <li><Link to="/contacto">Contacto</Link></li>
       </ul>
-      <CartWidget cantidad={2}/>
+      <CartWidget />
     </nav>
   );
 };

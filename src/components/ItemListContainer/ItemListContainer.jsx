@@ -1,9 +1,11 @@
 import './ItemListContainer.css';
 import Item from '../Item/Item.jsx'
-import getProductos from '../../servicios/mockServicios.js';
 import { useState, useEffect, useCallback } from 'react';
 import Loader from '../Loader/Loader.jsx';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import { db } from '../../firebaseConfig.js';
+import { collection, getDocs } from 'firebase/firestore';
+import { useAppContext } from '../../context/context.jsx';
 
 function ItemListContainer() {
 
@@ -12,6 +14,14 @@ function ItemListContainer() {
     const [loading, setLoading] = useState(false);
 
     const { categoria } = useParams();
+
+    const productosCollection = collection(db, 'productos');
+    const ordenesCollection = collection(db, 'ordenes');
+
+    const { carrito, limpiarCarrito } = useAppContext();
+
+    const navigate = useNavigate();
+
 
     const filterProducts = useCallback((arrayProducts, category) => {
         if (category) {
@@ -24,13 +34,14 @@ function ItemListContainer() {
     useEffect(() => {
         if (allProducts.length === 0) {
             setLoading(true);
-            getProductos()
-                .then(result => {
-                    setAllProducts(result);
-                    filterProducts(result, categoria);
+            getDocs(productosCollection)
+                .then(snapshot => {
+                    const arrayDeProductos = snapshot.docs.map(el => el.data());
+                    setAllProducts(arrayDeProductos);
+                    filterProducts(arrayDeProductos, categoria);
                     setLoading(false);
-
-                }).catch((err) => { alert(err) });
+                })
+                .catch(err => console.error(err));
         } else {
             filterProducts(allProducts, categoria);
         };

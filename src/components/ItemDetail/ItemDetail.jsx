@@ -4,12 +4,34 @@ import { useEffect, useState } from 'react';
 import getProductos from '../../servicios/mockServicios';
 import Loader from '../Loader/Loader';
 import Contador from '../Contador/Contador';
+import { useAppContext } from '../../context/context.jsx';
 
 function ItemDetail() {
 
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [producto, setProducto] = useState({});
+
+    const { agregarAlCarrito } = useAppContext();
+
+    const [cantidad, setCantidad] = useState(1);
+
+    function restarCantidad() {
+        if (cantidad > 1) {
+            setCantidad(cantidad - 1);
+        };
+    };
+
+    function sumarCantidad() {
+        if (cantidad < 10) {
+            setCantidad(cantidad + 1);
+        };
+    };
+
+    function agregarCantidadAlCarrito() {
+        agregarAlCarrito({ id: producto.id, precio: producto.precio, nombre: producto.nombre, cantidad });
+        setCantidad(1);
+    };
 
     useEffect(() => {
         getProductos()
@@ -37,8 +59,8 @@ function ItemDetail() {
                     <Link to={`/`}>
                         <button className="card-button">Volver al inicio</button>
                     </Link>
-                    <Contador />
-                    <button className="card-button">Agregar al carrito</button>
+                    <Contador cantidad={cantidad} sumarCantidad={sumarCantidad} restarCantidad={restarCantidad} />
+                    <button className="card-button" onClick={agregarCantidadAlCarrito}>Agregar al carrito</button>
                 </div>
             </div>
     );
